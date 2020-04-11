@@ -1,0 +1,37 @@
+<%= form_for(admin_tuition_fee) do |f| %>
+  <% if admin_tuition_fee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_tuition_fee.errors.count, "error") %> prohibited this admin_tuition_fee from being
+        saved:</h2>
+
+      <ul>
+        <% admin_tuition_fee.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :payable %>
+    <%= f.number_field :payable %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group_id %>
+    <%= f.collection_select :group_id, Admin::TuitionFeesGroup.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :admin_admission_fees_status %><br/>
+    <%= f.collection_select :admin_admission_fees_status_ids, Admin::AdmissionFeesStatus.all, :id, :name, {:prompt => true}, {multiple: true} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

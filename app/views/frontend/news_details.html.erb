@@ -1,0 +1,8 @@
+<div class="news-wrapper col-md-8 col-sm-7">
+  <article class="news-item">
+    <%= @news.description.html_safe %>
+  </article>
+</div>
+<div class="news-wrapper col-md-4 col-sm-5">
+  <p class="featured-image"><%= image_tag @news.image.url(:large), class: 'img-responsive' %></p>
+</div>

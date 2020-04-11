@@ -1,0 +1,52 @@
+<nav class="main-nav" role="navigation">
+
+  <div class="container">
+
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><!--//nav-toggle-->
+    </div><!--//navbar-header-->
+    <div class="navbar-collapse collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="<%= active_menu(root_url) %> nav-item"><%= link_to 'HOME', root_url %></li>
+
+       <li class="<%= active_menu(notice_boards_url) %> nav-item"><%= link_to 'Notice Board', notice_boards_url %></li>
+
+        <li class="<%= active_menu(abouts_url) %> nav-item"><%= link_to 'About', abouts_url %></li>
+
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Admissions <i class="fa fa-angle-down"></i></a>
+
+          <ul class="dropdown-menu">
+
+            <li><a href="<%= admission_eligibility_url %>"><i class="fa fa-rocket"></i>&nbsp;Admission Eligibility</a></li>
+            <li><a href="<%= tuition_fees_url %>"><i class="fa fa-money"></i>&nbsp;Tuition Fees</a></li>
+            <li><a href="<%= scholarships_url %>"><i class="fa fa-star"></i>&nbsp;Scholarships</a></li>
+            <li><a href="<%= how_to_apply_url %>"><i class="fa fa-file-text"></i>&nbsp;How to apply</a></li>
+
+          </ul>
+        </li><!--//dropdown-->
+
+        <li class="nav-item dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false" href="#">Courses<i class="fa fa-angle-down"></i></a>
+          <ul class="dropdown-menu">
+            <% Admin::Course.all.each do |course| %>
+            <li><a href="<%= root_url %>courses/<%= course.id %>"><i class="#"></i>&nbsp;<%= course.name %></a></li>
+            <% end %>
+          </ul>
+        </li><!--//dropdown-->
+
+        <!--<li class="nav-item"><a href="#">Research</a></li>-->
+        <li class="<%= active_menu(news_url) %> nav-item"><a href="<%= news_url %>">News</a></li>
+        <li class="<%= active_menu(events_url) %> nav-item"><a href="<%= events_url %>">Events</a></li>
+
+        <!--<li class="nav-item"><a href="#">Alumni</a></li>-->
+        <li class="<%= active_menu(contact_url) %> nav-item"><a href="<%= contact_url %>">Contact</a></li>
+      </ul><!--//nav-->
+    </div><!--//navabr-collapse-->
+  </div><!--//container-->
+</nav>
